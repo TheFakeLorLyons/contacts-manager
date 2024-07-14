@@ -1,0 +1,51 @@
+.GlobalBody
+{
+    background-color: bisque;
+    background-size: cover;
+    margin: 0;
+    height:100vh;
+}
+
+h1
+{
+    color:rgb(54, 27, 27);
+    padding:15px;
+}
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Centering everything on the page */
+.container {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    min-height: 100vh; /* Ensure full viewport height */
+    background-color: bisque;
+}
+
+/* Styling for main content */
+.main-content {
+    max-width: 850px; /* Example: Adjust width as needed */
+    margin-right: 20px; /* Space between main content and contact list */
+    text-align: center; /* Center content within main-content div */
+}
+
+/* Styling for contact list */
+.contact-list {
+    width: 500px; /* Example: Adjust width as needed */
+    text-align: left; /* Align text in list items to the left */
+}
+
+/* List styling */
+ul {
+    list-style-type: none; /* Remove default list styles */
+}
+
+ul li {
+    margin-bottom: 10px; /* Space between list items */
+}

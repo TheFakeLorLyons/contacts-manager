@@ -4,6 +4,7 @@
     background-size: cover;
     margin: 0;
     height:100vh;
+    flex: auto;
 }
 
 h1

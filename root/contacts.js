@@ -1,3 +1,4 @@
+//Model for the contact class
 class Contact {
     constructor(name, phoneNumber, email, relation, notes) {
       this.name = name;
@@ -5,9 +6,13 @@ class Contact {
       this.email = email;
       this.relation = relation;
       this.notes = notes;
+      this.dateTimeEntered = Date.now();
     }
   }
 
+//Leaves the contact list blank at first until shown or a contact is added to the list  
+let contactsVisible = false;
+  
 /*;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                        ;                 CRUD               ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
@@ -160,7 +165,7 @@ class Contact {
   }
 
 //Reads all the JSON objects contained in the local storage
-  function displayContacts() {
+  function loadContactList() {
     let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
     let listElement = document.getElementById('contactList');
@@ -171,6 +176,38 @@ class Contact {
         listItem.textContent = `${contact.name} - ${contact.phoneNumber} - ${contact.email} - ${contact.relation} - ${contact.notes}`;
         listElement.appendChild(listItem);
     });
+  }
+
+//Displays the contacts with the displayContacts function, or hides them if toggled off
+  function toggleContacts() {
+    const toggleButton = document.getElementById('toggleContactsListVisibility');
+    const contacts = document.getElementById('contactList');
+    
+    //If the list is visible, the togglebutton says it will load available contacts
+    if (contactsVisible) {
+        contacts.style.display = 'none';
+        toggleButton.textContent = 'Load Contacts';
+        contactsVisible = false;//global bool that says whether the list is variable
+    } else {
+        //Otherwise, it will display the contacts and offer to hide the now visible contacts.
+        displayContacts();
+    }
+  }
+
+  function displayContacts() {
+    const button = document.getElementById('toggleContactsListVisibility');
+    const contacts = document.getElementById('contactList');
+    
+    loadContactList();
+    contacts.style.display = 'block';
+    button.textContent = 'Hide Contacts';
+    contactsVisible = true;
+  }
+
+  function sortContactsAZ() {
+    const contacts = document.getElementById('contactList');
+
+    //sort the contacts list here
   }
 
 /*;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -203,7 +240,12 @@ class Contact {
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    // Your existing code here
+    //This goes in the event listener because it has to wait for the HTML to load
+    const toggleButton = document.getElementById('toggleContactsListVisibility');
+    const azButton = document.getElementById('sortAzButton');
+    toggleButton.addEventListener('click', toggleContacts);
+    toggleButton.addEventListener('click', sortContactsAZ);
+
     document.getElementById('editForm').addEventListener('submit', function(event) {
         event.preventDefault();
         

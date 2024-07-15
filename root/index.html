@@ -71,7 +71,7 @@
     </div>   
 
     <div class="contact-list">
-      <button type="button" onclick="displayContacts()">Load Contacts</button><br><br>
+      <button id="toggleContactsListVisibility">Load Contacts</button><br><br>
 
       <ul id="contactList">
           <!-- Contacts will be displayed here -->
@@ -79,7 +79,12 @@
     </div>
 
     <div>
-      <button id="deleteAllButton" type="button" onclick="clearContacts()">Delete ALL Contacts</button>
+      <button id="deleteAllButton" onclick="clearContacts()">Delete ALL Contacts</button><br><br>
+
+      <h2>Search Features (new!)</h2><br><br>
+
+      <h2>Sorting (new!)</h2><br>
+      <button id="sortAzButton"">Sort by name A-Z</button><br><br>
     </div> 
   </div>
   <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>-->
